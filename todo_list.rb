@@ -11,7 +11,7 @@ class TodoList
     @items << Item.new(content)
     save
     @items.last
-  end
+  end 
 
   def list_items  
     @items
@@ -46,15 +46,14 @@ end
 todo_list = TodoList.new
 command = ARGV[0]
 
-if command == '-a'
+if command == '-a' && ARGV[1] != nil
   item = todo_list.add_item(ARGV[1])
   puts "#{item.content} was added the todo list"
-
+elsif  command == '-l'
   todo_list.list_items.each do |item|
     puts "#{item.content}"
     puts "#{item.date}"
   end 
-  
-else
+else 
   puts 'Undefined command'
 end
